@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    private Rigidbody2D playerRigid;
-    public float moveSpeed = 3f;
+    public int playerNum;
+    public BoxCollider2D feet;
+    public float moveSpeed = 1f;
+    public float maxSpeed = 10f;
     public float jumpForce = 35f;
+
+    private Rigidbody2D playerRigid;
     public bool isGrounded = false;
 
     // Start is called before the first frame update
@@ -23,25 +27,41 @@ public class PlayerManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.A))
+        float movement = Input.GetAxisRaw("Horizontal" + playerNum);
+        float speedChange = movement * moveSpeed;
+
+        if (Mathf.Abs(playerRigid.velocity.x + speedChange) >= maxSpeed)
         {
-            playerRigid.AddForce(new Vector2(-moveSpeed, 0f), ForceMode2D.Impulse);
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            playerRigid.AddForce(new Vector2(moveSpeed, 0f), ForceMode2D.Impulse);
+            playerRigid.velocity = new Vector2(maxSpeed * movement, playerRigid.velocity.y);
         }
         else
         {
-            playerRigid.velocity = new Vector2(0f, playerRigid.velocity.y);
+            playerRigid.velocity = new Vector2(playerRigid.velocity.x + speedChange, playerRigid.velocity.y);
         }
     }
 
     void Jump()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && isGrounded == true)
+        if(Input.GetButtonDown("Jump") && isGrounded == true)
         {
             playerRigid.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+        }
+    }
+
+    // For checking whether player is grounded
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Ground")
+        {
+            isGrounded = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Ground")
+        {
+            isGrounded = false;
         }
     }
 }
