@@ -27,16 +27,28 @@ public class PlayerManager : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Move();
+    }
+
+    void Move()
+    {
         float movement = Input.GetAxisRaw("Horizontal" + playerNum);
         float speedChange = movement * moveSpeed;
+        float currentSpeed = playerRigid.velocity.x;
 
-        if (Mathf.Abs(playerRigid.velocity.x + speedChange) >= maxSpeed)
+        if (Mathf.Abs(currentSpeed + speedChange) >= maxSpeed)
         {
             playerRigid.velocity = new Vector2(maxSpeed * movement, playerRigid.velocity.y);
         }
+        else if (movement != 0)
+        {
+            playerRigid.AddForce(new Vector2(speedChange, 0f), ForceMode2D.Impulse);
+        }
         else
         {
-            playerRigid.velocity = new Vector2(playerRigid.velocity.x + speedChange, playerRigid.velocity.y);
+            float newSpeed = currentSpeed -moveSpeed;
+            if (Mathf.Sign(newSpeed) != Mathf.Sign(currentSpeed)) { newSpeed = 0f; };
+            playerRigid.velocity = new Vector2(newSpeed, playerRigid.velocity.y);
         }
     }
 
