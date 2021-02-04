@@ -26,7 +26,7 @@ public class destroy : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.name == "Player")
+        if (other.name == "Player1")
         {
             Player1.transform.position = Spawn1.transform.position;
             Camera1.transform.position = new Vector3(Spawn1.position.x, Spawn1.position.y, Camera1.transform.position.z);
