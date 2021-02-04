@@ -379,6 +379,8 @@ MonoBehaviour:
   Player2: {fileID: 907426844}
   Spawn1: {fileID: 1561788886}
   Spawn2: {fileID: 711670924}
+  Camera1: {fileID: 519420028}
+  Camera2: {fileID: 368217897}
 --- !u!61 &435900411
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1013,6 +1015,8 @@ MonoBehaviour:
   Player2: {fileID: 907426844}
   Spawn1: {fileID: 1561788886}
   Spawn2: {fileID: 711670924}
+  Camera1: {fileID: 0}
+  Camera2: {fileID: 0}
 --- !u!4 &1229564100
 Transform:
   m_ObjectHideFlags: 0
@@ -1902,6 +1906,14 @@ PrefabInstance:
       propertyPath: Spawn2
       value: 
       objectReference: {fileID: 711670924}
+    - target: {fileID: 8604165115616064175, guid: 407506df24993e149942821ce7d982fd, type: 3}
+      propertyPath: Camera1
+      value: 
+      objectReference: {fileID: 519420028}
+    - target: {fileID: 8604165115616064175, guid: 407506df24993e149942821ce7d982fd, type: 3}
+      propertyPath: Camera2
+      value: 
+      objectReference: {fileID: 368217897}
     - target: {fileID: 8604165115616064175, guid: 407506df24993e149942821ce7d982fd, type: 3}
       propertyPath: Player1
       value: 
