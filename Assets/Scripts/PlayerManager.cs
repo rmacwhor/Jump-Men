@@ -9,6 +9,8 @@ public class PlayerManager : MonoBehaviour
     public float moveSpeed = 1f;
     public float maxSpeed = 10f;
     public float jumpForce = 35f;
+    public Transform spawn;
+    public GameObject playerCamera;
 
     private Rigidbody2D playerRigid;
     public bool isGrounded = false;
