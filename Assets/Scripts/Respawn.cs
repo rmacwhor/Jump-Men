@@ -23,16 +23,16 @@ public class Respawn: MonoBehaviour
 
         if (other.name == "Player1")
         {
-            Transform spawn = other.GetComponent<PlayerManager>().spawn;
-            GameObject playerCamera = other.GetComponent<PlayerManager>().playerCamera;
+            Transform spawn = other.GetComponent<PrototypeHeroDemo>().spawn;
+            GameObject playerCamera = other.GetComponent<PrototypeHeroDemo>().playerCamera;
             other.transform.position = spawn.position;
             playerCamera.transform.position = new Vector3(spawn.position.x, spawn.position.y, playerCamera.transform.position.z);
             
         }
         else if (other.name == "Player2")
         {
-            Transform spawn = other.GetComponent<PlayerManager>().spawn;
-            GameObject playerCamera = other.GetComponent<PlayerManager>().playerCamera;
+            Transform spawn = other.GetComponent<PrototypeHeroDemo>().spawn;
+            GameObject playerCamera = other.GetComponent<PrototypeHeroDemo>().playerCamera;
             other.transform.position = spawn.position;
             playerCamera.transform.position = new Vector3(spawn.position.x, spawn.position.y, playerCamera.transform.position.z);
         }

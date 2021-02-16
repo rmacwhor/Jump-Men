@@ -22,12 +22,12 @@ public class Checkpoint : MonoBehaviour
         if (other.name == "Player1")
         {
             Transform newSpawn = this.GetComponent<Transform>();
-            other.GetComponent<PlayerManager>().spawn = newSpawn;
+            other.GetComponent<PrototypeHeroDemo>().spawn = newSpawn;
         }
         else if (other.name == "Player2")
         {
             Transform newSpawn = this.GetComponent<Transform>();
-            other.GetComponent<PlayerManager>().spawn = newSpawn;
+            other.GetComponent<PrototypeHeroDemo>().spawn = newSpawn;
         }
     }
 }
