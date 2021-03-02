@@ -33,7 +33,7 @@ public class GoalBehavior : MonoBehaviour
 
     private IEnumerator OnGoal()
     {
-        yield return new WaitForSecondsRealtime(3.0f);
+        yield return new WaitForSecondsRealtime(0.1f);
         SceneManager.LoadScene("Menu");
     }
 }
