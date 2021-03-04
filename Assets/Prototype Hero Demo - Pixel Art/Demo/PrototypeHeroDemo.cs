@@ -105,6 +105,10 @@ public class PrototypeHeroDemo : MonoBehaviour {
             //Jump
             if (Input.GetButtonDown("Jump") && m_grounded && m_disableMovementTimer < 0.0f)
             {
+
+                m_body2d.isKinematic = false;
+                transform.parent = null;
+
                 m_animator.SetTrigger("Jump");
                 m_grounded = false;
                 m_animator.SetBool("Grounded", m_grounded);
@@ -125,7 +129,14 @@ public class PrototypeHeroDemo : MonoBehaviour {
             m_animator.SetInteger("AnimState", 0);
         }
     }
-
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.transform.tag == "Moving Platform")
+        {
+            m_body2d.isKinematic = true;
+            transform.parent = collision.transform;
+        }
+    }
     // Function used to spawn a dust effect
     // All dust effects spawns on the floor
     // dustXoffset controls how far from the player the effects spawns.
