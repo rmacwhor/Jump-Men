@@ -106,7 +106,6 @@ public class PrototypeHeroDemo : MonoBehaviour {
             if (Input.GetButtonDown("Jump") && m_grounded && m_disableMovementTimer < 0.0f)
             {
 
-                m_body2d.isKinematic = false;
                 transform.parent = null;
 
                 m_animator.SetTrigger("Jump");
@@ -133,7 +132,7 @@ public class PrototypeHeroDemo : MonoBehaviour {
     {
         if (collision.transform.tag == "Moving Platform")
         {
-            m_body2d.isKinematic = true;
+            
             transform.parent = collision.transform;
         }
     }
