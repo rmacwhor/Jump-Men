@@ -106,8 +106,6 @@ public class PrototypeHeroDemo : MonoBehaviour {
             if (Input.GetButtonDown("Jump") && m_grounded && m_disableMovementTimer < 0.0f)
             {
 
-                transform.parent = null;
-
                 m_animator.SetTrigger("Jump");
                 m_grounded = false;
                 m_animator.SetBool("Grounded", m_grounded);
@@ -128,12 +126,18 @@ public class PrototypeHeroDemo : MonoBehaviour {
             m_animator.SetInteger("AnimState", 0);
         }
     }
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.transform.tag == "Moving Platform")
         {
-            
             transform.parent = collision.transform;
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.transform.tag == "Moving Platform")
+        {
+            transform.parent = null;
         }
     }
     // Function used to spawn a dust effect
