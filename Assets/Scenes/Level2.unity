@@ -264,8 +264,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Object: {fileID: 803065408}
-  followOffset: {x: 40, y: 10}
-  speed: 3
+  followOffset: {x: 50, y: 12}
+  speed: 6
 --- !u!1001 &375819045
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -436,8 +436,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Object: {fileID: 2109663080}
-  followOffset: {x: 40, y: 10}
-  speed: 3
+  followOffset: {x: 50, y: 12}
+  speed: 6
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
